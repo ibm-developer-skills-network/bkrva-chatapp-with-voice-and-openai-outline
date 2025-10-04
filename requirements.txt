@@ -1,4 +1,21 @@
-Flask
-Flask_Cors
-openai
-requests
+# Web Framework
+Flask==3.0.0
+Flask-Cors==4.0.0
+
+# HTTP Requests (still needed for any API calls)
+requests==2.31.0
+
+# Speech-to-Text (Whisper)
+transformers==4.35.2
+torch==2.1.1
+numpy<2.0  # Compatibility with transformers
+
+# LLM Integration (Ollama)
+langchain==0.3.12
+langchain-ollama==0.2.0
+
+# Text-to-Speech (Google TTS)
+gTTS==2.5.4
+
+# Audio processing utilities
+ffmpeg-python==0.2.0  # Python wrapper for ffmpeg operations

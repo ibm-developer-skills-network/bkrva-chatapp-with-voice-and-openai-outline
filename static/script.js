@@ -238,8 +238,8 @@ $(document).ready(function () {
     lightMode = !lightMode;
   });
 
-  $("#voice-options").change(function () {
+  $("#voice").change(function () {
     voiceOption = $(this).val();
-    console.log(voiceOption);
+    console.log("Voice changed to:", voiceOption);
   });
 });
