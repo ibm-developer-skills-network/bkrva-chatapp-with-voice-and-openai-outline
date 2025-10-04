@@ -63,24 +63,28 @@ def speech_to_text(audio_binary):
         return "Error transcribing audio"
 
 
-def text_to_speech(text, voice=""):
+def text_to_speech(text, voice="com"):
     """
     Convert text to speech using Google Text-to-Speech (gTTS).
     
     Args:
         text: Text to convert to speech
-        voice: Voice parameter (currently ignored by gTTS, kept for compatibility)
+        voice: Voice parameter voice parameter now represents TLD (accent variant)
+                Examples: 'com' (US), 'co.uk' (UK), 'com.au' (AU)
         
     Returns:
         bytes: Audio data in MP3 format
     """
     try:
-        print(f"Converting text to speech: {text[:50]}...")
+        # Default to US English if empty or "default"
+        if voice == "" or voice == "default":
+            voice = "com"
+
+        print(f"Converting text to speech with voice '{voice}': {text[:50]}...")
         
         # Initialize gTTS with the text
-        # Note: gTTS doesn't support custom voices like Watson did
-        # It uses Google's default English voice
-        tts = gTTS(text=text, lang='en', slow=False)
+        # It uses Google's default English language model
+        tts = gTTS(text=text, lang='en', tld=voice, slow=False)
         
         # Save audio to bytes buffer in memory
         audio_bytes = io.BytesIO()
